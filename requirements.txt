@@ -1,0 +1,6 @@
+cerberus
+marshmallow
+numpy
+pandas
+sanic
+sklearn

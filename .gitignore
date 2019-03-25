@@ -1,0 +1,31 @@
+data/*.csv
+saved_models/*.pkl
+
+__pycache__/
+*.py[cod]
+*.pytest_cache/
+*$py.class
+
+
+# virtualenv
+.venv
+ENV/
+
+# Rope project settings
+.ropeproject
+
+# mypy
+.mypy_cache/
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+
+

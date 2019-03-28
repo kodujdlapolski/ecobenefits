@@ -33,4 +33,4 @@ def validate(func: Callable) -> Callable:
 @validate
 async def root(request):
     benefits = await predict_all_benefits(models, request.json['trunk_diam'])
-    return json(benefits, status=201)
+    return json(benefits, status=200)

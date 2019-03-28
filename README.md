@@ -18,7 +18,10 @@ The model is defined in this notebook: [Eco model](https://github.com/kodujdlapo
 To start the project, first create the virtualenv and install dependencies (service is designed to work with Python >= 3.7) using following command:
 ```
 cd ecobenefits/
+
 make build
+
+source .venv/bin/activate
 ```
 ## How to test
 This will run mypy type checks and unit tests.
@@ -46,6 +49,7 @@ make run
 The eco model is based on the tree trunk diameter, so we need to send the diameter through the request to see what benefis tree of given size provides.
 ```
 http POST :8888/benefits trunk_diam:=57.000000
+
 HTTP/1.1 200 OK
 Content-Type: application/json
 

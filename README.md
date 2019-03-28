@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/sireliah/ecobenefits.svg?branch=master)](https://travis-ci.com/sireliah/ecobenefits)
+
 # Ecobenefits
 Every tree helps to aggregate polution by collecting it through leaves stomata. This service delivers estimated ecological benefits for trees in mapadrzew.pl. We are able to tell how many grams of pollution given tree is able to remove through a year. In particular we estimate amount of:
 

@@ -4,11 +4,12 @@ import cerberus
 from sanic import Sanic
 from sanic.response import json
 
+from eco import config
 from eco.data_utils import load_models
 from eco.eco_model import predict_all_benefits
 
 app = Sanic()
-models = load_models()
+models = load_models(config.MODELS_PATH)
 
 schema = {'trunk_diam': {'type': 'float'}}
 
@@ -31,6 +32,6 @@ def validate(func: Callable) -> Callable:
 
 @app.route('/benefits', methods=['POST', ])
 @validate
-async def root(request):
-    benefits = await predict_all_benefits(models, request.json['trunk_diam'])
+def root(request):
+    benefits = predict_all_benefits(models, request.json['trunk_diam'])
     return json(benefits, status=200)

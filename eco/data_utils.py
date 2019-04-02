@@ -57,13 +57,13 @@ def dump_models(models: Dict) -> None:
             pickle.dump(model, desc)
 
 
-def load_models() -> Dict[str, HuberRegressor]:
+def load_models(models_path: str) -> Dict[str, HuberRegressor]:
     models = {}
     model_files = {
-        a: os.path.join(config.MODELS_PATH, a + '.pkl') for a in config.FACTORS
+        a: os.path.join(models_path, a + '.pkl') for a in config.FACTORS
     }
 
-    assert model_files, f'Expected to find models in {config.MODELS_PATH}'
+    assert model_files, f'Expected to find models in {models_path}'
     for factor, path in model_files.items():
         with open(path, 'rb') as desc:
             models[factor] = pickle.load(desc)

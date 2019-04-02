@@ -33,17 +33,17 @@ def train_regression(trees_df, factor):
     return reg
 
 
-async def predict_benefit(reg_model: HuberRegressor,
+def predict_benefit(reg_model: HuberRegressor,
                           trunk_diam: float) -> float:
     trunk_diam_sqrt = math.sqrt(trunk_diam)
     return reg_model.predict([[trunk_diam, trunk_diam_sqrt]])[0]
 
 
-async def predict_all_benefits(models: dict, trunk_diam: float) -> Dict[str, float]:
+def predict_all_benefits(models: dict, trunk_diam: float) -> Dict[str, float]:
     benefits = {}
     for factor in config.FACTORS:
         reg_model = models[factor]
-        benefits[factor] = await predict_benefit(reg_model, trunk_diam)
+        benefits[factor] = predict_benefit(reg_model, trunk_diam)
     return benefits
 
 

@@ -23,6 +23,8 @@ def load_data(files: str) -> pandas.DataFrame:
 
 
 def load_training_data(data_path: str) -> pandas.DataFrame:
+    if not os.path.isfile(data_path):
+        raise Exception(f'No training file in {data_path}')
     return pandas.read_csv(data_path, sep=';')
 
 

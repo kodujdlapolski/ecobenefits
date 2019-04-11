@@ -3,6 +3,6 @@ run:
 build:
 	./build.sh
 train:
-	./train_model.sh
+	python3 train.py
 test:
 	mypy eco --ignore-missing-imports && python3 -m unittest discover

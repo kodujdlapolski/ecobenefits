@@ -33,8 +33,7 @@ def train_regression(trees_df, factor):
     return reg
 
 
-def predict_benefit(reg_model: HuberRegressor,
-                          trunk_diam: float) -> float:
+def predict_benefit(reg_model: HuberRegressor, trunk_diam: float) -> float:
     trunk_diam_sqrt = math.sqrt(trunk_diam)
     return reg_model.predict([[trunk_diam, trunk_diam_sqrt]])[0]
 

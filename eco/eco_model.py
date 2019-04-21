@@ -13,7 +13,7 @@ from eco.data_utils import (dump_models, load_training_data,
 logger = logging.getLogger(__name__)
 
 
-def train_regression(trees_df, factor):
+def train_regression(trees_df, factor) -> HuberRegressor:
     x_train, x_validation, y_train, y_validation = train_test_split(
         trees_df[['OBWOD', 'OBWOD_SQ']],
         trees_df[factor],
@@ -46,7 +46,7 @@ def predict_all_benefits(models: dict, trunk_diam: float) -> Dict[str, float]:
     return benefits
 
 
-def train():
+def train() -> None:
     tr_data = prepare_training_data(
         load_training_data(config.TRAINING_DATA_PATH))
     models = {}

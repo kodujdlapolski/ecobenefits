@@ -1,8 +1,10 @@
 run:
-	python3 run.py
+	python run.py
 build:
 	./build.sh
 train:
-	python3 train.py
+	python train.py
+stats:
+	python compute_stats.py
 test:
-	mypy eco --ignore-missing-imports && python3 -m unittest discover
+	mypy eco --ignore-missing-imports && python -m unittest discover

@@ -3,6 +3,16 @@ import os
 HOST = '0.0.0.0'
 PORT = 8888
 
+REDIS_HOST = 'localhost'
+REDIS_PORT = 6379
+REDIS_DB = 5
+
+DB_USER = ''
+DB_PASS = ''
+DB_NAME = ''
+DB_HOST = 'localhost'
+
+
 FACTORS = [
     'O3',
     'NO2',

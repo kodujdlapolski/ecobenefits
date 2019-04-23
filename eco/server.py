@@ -1,14 +1,15 @@
-from typing import Callable
+from typing import Any, Callable
 
 import cerberus
 from sanic import Sanic
+from sanic.request import Request
 from sanic.response import json
 
 from eco import config
 from eco.data_utils import load_models
-from eco.eco_model import predict_all_benefits
-from eco.utils import get_async_redis_conn
+from eco.eco_model import predict_tree_benefits
 from eco.stats import EcoStatistics
+from eco.utils import get_async_redis_conn
 
 app = Sanic()
 
@@ -16,13 +17,13 @@ schema = {'trunk_diam': {'type': 'float'}}
 
 
 @app.listener('before_server_start')
-async def setup(app, loop):
+async def setup(app: Sanic, loop: Any):
     app.models = load_models(config.MODELS_PATH)
     app.redis_conn = await get_async_redis_conn()
 
 
 @app.listener('before_server_stop')
-async def close_redis_conn(app, loop):
+async def close_redis_conn(app: Sanic, loop: Any):
     app.redis_conn.close()
 
 
@@ -44,13 +45,13 @@ def validate(func: Callable) -> Callable:
 
 @app.route('/tree-benefits', methods=['POST', ])
 @validate
-def tree_benefits(request):
-    benefits = predict_all_benefits(app.models, request.json['trunk_diam'])
+def tree_benefits(request: Request):
+    benefits = predict_tree_benefits(app.models, request.json['trunk_diam'])
     return json(benefits, status=200)
 
 
-@app.route('/total-benefits', methods=['GET', ])
-async def total_benefits(request):
+@app.route('/summary', methods=['GET', ])
+async def benefits_summary(request: Request):
     stats = EcoStatistics(app.redis_conn)
     total_stats = await stats.get_eco_stats()
     return json(total_stats, status=200)

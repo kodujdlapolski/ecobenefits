@@ -1,5 +1,5 @@
-from eco.utils import get_sync_redis_conn
 from eco.stats import EcoStatistics
+from eco.utils import get_sync_redis_conn
 
 
 def compute_stats():

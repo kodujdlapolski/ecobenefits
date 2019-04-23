@@ -5,7 +5,7 @@ from typing import Dict
 
 import numpy as np
 import pandas
-from sklearn.linear_model import HuberRegressor
+from sklearn.linear_model.base import LinearModel
 
 from eco import config
 from eco.diameter_tools import get_trunk_diam
@@ -59,7 +59,7 @@ def dump_models(models: Dict) -> None:
             pickle.dump(model, desc)
 
 
-def load_models(models_path: str) -> Dict[str, HuberRegressor]:
+def load_models(models_path: str) -> Dict[str, LinearModel]:
     models = {}
     model_files = {
         a: os.path.join(models_path, a + '.pkl') for a in config.FACTORS

@@ -1,8 +1,8 @@
 from unittest import TestCase
 
 from eco import config
-from eco.eco_model import predict_all_benefits
 from eco.data_utils import load_models
+from eco.eco_model import predict_tree_benefits
 
 
 class TestModel(TestCase):
@@ -11,7 +11,7 @@ class TestModel(TestCase):
         cls.models = load_models(config.PROJECT_DIR + '/tests/models/')
 
     def test_predict_all_benefits(self):
-        result = predict_all_benefits(self.models, 70.0)
+        result = predict_tree_benefits(self.models, 70.0)
         self.assertEqual(
             result, {
                 'NO2': 65.62154430598939,

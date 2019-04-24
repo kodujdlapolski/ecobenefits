@@ -71,8 +71,7 @@ class EcoStatistics:
         for diam in trees:
             benefits = predict_tree_benefits(self.eco_models, diam)
             for factor, value in benefits.items():
-                stats_factor = stats['benefits'][factor]
-                stats_factor += value
+                stats['benefits'][factor] += value
 
         self.redis_conn.set(self.stats_key, ujson.dumps(stats))
         logger.info(f'Saved tree stats. Trees count: {trees_count}')

@@ -49,14 +49,14 @@ logging.config.dictConfig(LOG_CONFIG)
 HOST = '0.0.0.0'
 PORT = 8888
 
-REDIS_HOST = 'localhost'
+REDIS_HOST = 'redis'
 REDIS_PORT = 6379
 REDIS_DB = 5
 
-DB_USER = ''
-DB_PASS = ''
-DB_NAME = ''
-DB_HOST = 'localhost'
+DB_USER = 'otm_kdp'
+DB_PASS = 'postgres'
+DB_NAME = 'otm_kdp'
+DB_HOST = 'postgres'
 
 
 FACTORS = [

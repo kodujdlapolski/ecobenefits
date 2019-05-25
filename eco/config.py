@@ -53,7 +53,7 @@ REDIS_HOST = 'redis'
 REDIS_PORT = 6379
 REDIS_DB = 5
 
-DB_USER = 'otm_kdp'
+DB_USER = 'postgres'
 DB_PASS = 'postgres'
 DB_NAME = 'otm_kdp'
 DB_HOST = 'postgres'

@@ -46,9 +46,11 @@ make run
 [19826] [INFO] Goin' Fast @ http://0.0.0.0:8888
 [19826] [INFO] Starting worker [19826]
 ```
+
+### Tree-benefits endpoint
 The eco model is based on the tree trunk diameter, so we need to send the diameter through the request to see what benefis tree of given size provides.
 ```
-http POST :8888/benefits trunk_diam:=57.000000
+http POST :8888/tree-benefits trunk_diam:=57.000000
 
 HTTP/1.1 200 OK
 Content-Type: application/json
@@ -60,7 +62,30 @@ Content-Type: application/json
     "SO2": 6.0842316844
 }
 ```
-That's it! Returned values are in **grams per year** units.
+Returned values are in **grams per year** units.
+
+### Summary endpoint
+Summary returns benefits for all trees that are present in the otm-core database.
+
+The `make stats` command imports all trees and calculates benefits for them.
+
+Results can be viewed as follows.
+```
+http :8888/summary
+
+HTTP/1.1 200 OK
+Content-Type: application/json
+
+{
+    "benefits": {
+        "NO2": 50.6408962856,
+        "O3": 86.8929782983,
+        "PM2.5": 4.6798194028,
+        "SO2": 6.0842316844
+    },
+    "trees_count": 1
+}
+```
 
 Note: `http` command is provided by [httpie](https://httpie.org/).
 
